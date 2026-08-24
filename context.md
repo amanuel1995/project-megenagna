@@ -117,11 +117,15 @@ To build a reliable addressing system without spending decades on traditional mu
 ### Layer 2: Integration with Fayda National Digital ID
 
 * **Anchor Addresses to Identities:** Integrate the open digital grid directly into the **Fayda ID database**. When citizens register or update their Fayda profile, their home or business entrance's grid code is tagged as their primary legal address.
-* **Administrative Hierarchy Prefix:** Structure the address format logically:
+* **Administrative Hierarchy Prefix:** Structure the address format logically. Hierarchy depth is **jurisdiction-aware, not fixed**: Addis Ababa's Woreda absorbed Kebele's administrative role in the 2011 E.C. restructuring ([Addis Ababa City Administration](https://en.wikipedia.org/wiki/Addis_Ababa_City_Administration); [Borkena, 2020](https://borkena.com/2020/10/21/addis-ababa-city-administration-restructuring-new-sub-city/) — accessed 2026-08-24), but Kebele remains the lowest formal unit everywhere else in Ethiopia — including Dire Dawa, the other chartered city ([Dire Dawa City Administration](https://en.wikipedia.org/wiki/Dire_Dawa_City_Administration) — accessed 2026-08-24) — and all 10 other regions, which follow `Region → Zone → Woreda → Kebele` ([Subdivisions of Ethiopia](https://en.wikipedia.org/wiki/Subdivisions_of_Ethiopia) — accessed 2026-08-24):
 
 **`AA-LK-W03-8FW4+9X`**
 
 *(Region: Addis Ababa → Sub-City: Lemi Kura → Woreda: 03 → Precise Grid Code)*
+
+**`DD-W01-K05-8FW4+9X`**
+
+*(Region: Dire Dawa → Woreda: 01 → Kebele: 05 → Precise Grid Code)*
 
 ### Layer 3: Physical QR-Coded Door Plaques in Urban Centers
 

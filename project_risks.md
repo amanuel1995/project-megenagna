@@ -12,6 +12,7 @@ This document tracks the architectural and feasibility risks identified for the 
 | 4 | Roadmap overstated implementation status vs. actual repo state | Docs | Low | **Resolved** |
 | 5 | Offline-sync conflict resolution was undesigned | 4 | Medium | **Resolved** |
 | 6 | Multilingual/Ge'ez script scope is non-trivial and unbudgeted | 3/4 | Medium | Open |
+| 7 | Address hierarchy schema assumed fixed depth, dropping Kebele nationally | 2 | High | **Resolved** |
 
 ---
 
@@ -69,3 +70,20 @@ This is a design decision, not yet implemented code — re-verify it against the
 **Risk:** UI, plaques (laser-cut/print), and mobile apps must natively support Ge'ez script (Amharic, Tigrinya) alongside Latin script (Afaan Oromoo, Somali, English). This is real font-rendering, translation, and print-production scope — not a standard i18n pass — especially for low-end Android devices and physical signage production.
 
 **Mitigation path:** Budget explicit design/localization effort for Ge'ez typography (web font selection, print-safe vector fonts for `packages/plaque`, and professional translation) rather than treating it as a string-table exercise during Milestone 3/4.
+
+---
+
+## 7. Address Hierarchy Schema Assumed Fixed Depth — RESOLVED
+
+**Risk:** `README.md`/`context.md` illustrated the Layer 2 address format with a single Addis Ababa example (`Region → Sub-City → Woreda → House`), omitting Kebele. Ethiopia's national administrative hierarchy is `Region → Zone → Woreda → Kebele`, and Kebele remains the lowest formal unit everywhere except Addis Ababa, where the 2011 E.C. restructuring consolidated Kebele's role into Woreda. Dire Dawa — the country's other chartered city — still has 24 urban kebeles under its woredas. Had `packages/core`/ET-NAS been implemented against the single Addis Ababa example, the schema would have silently dropped Kebele for the rest of the country.
+
+**Resolution:**
+- Confirmed via research: Addis Ababa's `Sub-City → Woreda` example is correct *for Addis Ababa specifically*; it is not the national template.
+- Added a second worked example (Dire Dawa: `Region → Woreda → Kebele`) to `README.md` and `context.md` alongside the Addis Ababa one, and called out explicitly that hierarchy depth is jurisdiction-aware, not fixed.
+- **Recommendation for `packages/core` (Milestone 1, not yet implemented):** model the hierarchy as variable-depth — `Country → Region → [Zone | Sub-City] → Woreda → [Kebele] → House/Grid` — where `Zone` applies to standard regions, `Sub-City` applies to chartered cities, and `Kebele` is present everywhere except within Addis Ababa. Re-verify this against real municipal data before Milestone 1 implementation locks in a schema.
+
+**Sources (accessed 2026-08-24):**
+- [Subdivisions of Ethiopia](https://en.wikipedia.org/wiki/Subdivisions_of_Ethiopia) — Wikipedia
+- [Dire Dawa City Administration](https://en.wikipedia.org/wiki/Dire_Dawa_City_Administration) — Wikipedia
+- [Addis Ababa City Administration](https://en.wikipedia.org/wiki/Addis_Ababa_City_Administration) — Wikipedia
+- [Addis Ababa City Administration restructuring, new sub-city](https://borkena.com/2020/10/21/addis-ababa-city-administration-restructuring-new-sub-city/) — Borkena, 2020

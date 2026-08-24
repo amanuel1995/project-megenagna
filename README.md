@@ -48,9 +48,12 @@ Project Megenagna introduces a **4-Layer Open Hybrid Architecture** tailored spe
 - **Resolution**: ~14m × 14m (10-character code) or ~3m × 3m (11-character sub-door code).
 
 ### Layer 2: Administrative Hierarchy & Fayda National ID Binding
-- Structures addresses into intuitive, human-readable administrative hierarchies:
+- Structures addresses into intuitive, human-readable administrative hierarchies. Depth is **jurisdiction-aware, not fixed** — Addis Ababa's Woreda absorbed Kebele's role in the 2011 E.C. restructuring ([Addis Ababa City Administration](https://en.wikipedia.org/wiki/Addis_Ababa_City_Administration); [Borkena, 2020](https://borkena.com/2020/10/21/addis-ababa-city-administration-restructuring-new-sub-city/) — accessed 2026-08-24), but Kebele remains the lowest unit everywhere else, including Dire Dawa, Ethiopia's other chartered city ([Dire Dawa City Administration](https://en.wikipedia.org/wiki/Dire_Dawa_City_Administration) — accessed 2026-08-24), and all 10 other regions via `Region → Zone → Woreda → Kebele` ([Subdivisions of Ethiopia](https://en.wikipedia.org/wiki/Subdivisions_of_Ethiopia) — accessed 2026-08-24):
   **`ET-AA-LK-W03-H104-8FW4+9X`**
   *(Country: Ethiopia → Region: Addis Ababa → Sub-City: Lemi Kura → Woreda: 03 → House: 104 → Digital Pinpoint Grid)*
+
+  **`ET-DD-W01-K05-8FW4+9X`**
+  *(Country: Ethiopia → Region: Dire Dawa → Woreda: 01 → Kebele: 05 → Digital Pinpoint Grid)*
 - Bridges physical coordinates with Ethiopia's **Fayda Biometric National Digital ID** for seamless KYC and residency verification.
 
 ### Layer 3: Physical QR-Coded Municipal Door Plaques
