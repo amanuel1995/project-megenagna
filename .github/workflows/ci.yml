@@ -20,3 +20,30 @@ jobs:
         run: |
           git submodule status
           test -f open-location-code/README.md
+
+  check-pages-freshness:
+    name: Check GitHub Pages site freshness
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Fail if source docs changed without docs/index.html
+        run: |
+          BASE="origin/${{ github.base_ref }}"
+          CHANGED=$(git diff --name-only "$BASE"...HEAD)
+          echo "Changed files:"
+          echo "$CHANGED"
+
+          SOURCE_DOCS_CHANGED=$(echo "$CHANGED" | grep -E '^(README\.md|project_risks\.md|context\.md|coding_standards\.md)$' || true)
+          SITE_CHANGED=$(echo "$CHANGED" | grep -E '^docs/index\.html$' || true)
+
+          if [ -n "$SOURCE_DOCS_CHANGED" ] && [ -z "$SITE_CHANGED" ]; then
+            echo "::error::This PR changes $(echo "$SOURCE_DOCS_CHANGED" | tr '\n' ' ') but not docs/index.html."
+            echo "::error::The GitHub Pages site (https://amanuel1995.github.io/project-megenagna/) mirrors facts from these docs and may now be stale."
+            echo "::error::Either update docs/index.html to match, or confirm this change doesn't affect anything shown on the site and edit this workflow's diff if it's a false positive."
+            exit 1
+          fi
