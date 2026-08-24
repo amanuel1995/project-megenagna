@@ -44,13 +44,18 @@
     background:color-mix(in srgb, var(--bg) 85%, transparent);
     border-bottom:1px solid var(--border);
   }
-  .navrow{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:980px; margin:0 auto; gap:16px}
-  .brand{font-weight:800; letter-spacing:-.01em; font-size:15px; white-space:nowrap}
+  .navrow{display:flex; align-items:center; justify-content:space-between; padding:14px 24px; max-width:980px; margin:0 auto; gap:16px; flex-wrap:nowrap}
+  .brand{font-weight:800; letter-spacing:-.01em; font-size:15px; white-space:nowrap; flex-shrink:0}
   .brand span{color:var(--green-deep)}
   @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .brand span{color:var(--green)} }
-  .navlinks{display:flex; gap:18px; flex-wrap:wrap; font-size:13.5px}
-  .navlinks a{color:var(--text-dim); text-decoration:none; font-weight:600}
+  .navlinks{
+    display:flex; gap:16px; flex-wrap:nowrap; font-size:13.5px; white-space:nowrap;
+    overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; min-width:0;
+  }
+  .navlinks::-webkit-scrollbar{display:none}
+  .navlinks a{color:var(--text-dim); text-decoration:none; font-weight:600; flex-shrink:0}
   .navlinks a:hover{color:var(--text)}
+  @media (max-width:680px){ .brand span:last-child{display:none} }
   .gh-btn{
     display:inline-flex; align-items:center; gap:6px; background:var(--text); color:var(--bg);
     padding:7px 14px; border-radius:999px; font-size:13px; font-weight:700; text-decoration:none;
