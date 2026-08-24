@@ -76,6 +76,8 @@ This project follows strict engineering and AI agentic guidelines to maintain pr
 - **[coding_standards.md](./coding_standards.md)**: Engineering playbook covering low-bandwidth resilience, Ethiopian Data Protection Proclamation No. 1321/2024 compliance, and Row Level Security (RLS).
 - **[context.md](./context.md)**: In-depth research, architectural rationale, and global case studies (Dubai Makani, India DIGIPIN, GhanaPostGPS).
 - **[project_risks.md](./project_risks.md)**: Living risk register tracking architectural and feasibility risks, with status and mitigation paths.
+- **[MILESTONE_1_PLAN.md](./MILESTONE_1_PLAN.md)**: Execution plan for the core ET-NAS engine and OLC algorithm implementation.
+- **[rfcs/0001-etnas-milestone-1.md](./rfcs/0001-etnas-milestone-1.md)**: Open questions and assumptions for the community to review before the address format stabilizes.
 
 ---
 
