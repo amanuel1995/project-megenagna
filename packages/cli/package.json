@@ -1,0 +1,19 @@
+{
+  "name": "@megenagna/cli",
+  "version": "0.1.0",
+  "description": "Command-line interface for Project Megenagna addressing system",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "megenagna": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@megenagna/core": "*",
+    "@megenagna/plaque": "*"
+  },
+  "license": "Apache-2.0"
+}

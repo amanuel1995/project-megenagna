@@ -1,0 +1,27 @@
+{
+  "name": "@megenagna/plaque",
+  "version": "0.1.0",
+  "description": "Physical door plaque and QR code vector generator for Ethiopian addresses",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@megenagna/core": "*",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5"
+  },
+  "keywords": ["ethiopia", "addressing", "plaque", "qr-code", "svg"],
+  "license": "Apache-2.0"
+}
