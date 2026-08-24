@@ -72,6 +72,10 @@ This document serves as the single source of truth for all engineers, architects
 - **Explicit Access Policies:** Define explicit `SELECT`, `INSERT`, `UPDATE`, and `DELETE` policies for `anon` and `authenticated` roles.
 - **Zero Waterfall Queries:** Consolidate complex geospatial lookups into single PostgreSQL RPC functions or spatial PostGIS index queries (`ST_Contains`, `ST_DWithin`).
 - **No Sensitive PII in Logs:** Redact phone numbers, national IDs, and exact house ownership metadata from application logs.
+- **Offline-Sync Conflict Resolution:** Mobile/web clients queue address mutations locally while offline and replay them against `apps/server` on reconnect. Because address records carry legal identity weight (Fayda binding), conflicts must never resolve silently:
+  - **Field-level updates** (e.g. correcting a house number): resolved by **Last-Write-Wins on a server-authoritative `updated_at` timestamp**. Each queued mutation carries a client-generated UUID and local timestamp; the sync endpoint applies it only if `incoming.updated_at > stored.updated_at`, otherwise it rejects the write and returns the current server record so the client can reconcile. A wall-clock LWW is sufficient here — address edits are low-frequency and rarely concurrent — so a Hybrid Logical Clock is not warranted.
+  - **Duplicate creates** (two clients registering the same physical location while both offline): **never auto-merged**. Enforce a uniqueness constraint on `(grid_code, house_number)` at the database level; a colliding insert is routed to a manual review queue instead of being silently overwritten or discarding one submission.
+  - **Audit trail:** every rejected write and every manual-review resolution is appended to an immutable audit log (record id, both versions, resolution, timestamp) to satisfy Proclamation No. 1321/2024 — legal address data must never be silently lost or overwritten without a trace.
 
 ---
 

@@ -45,12 +45,15 @@ Project Megenagna introduces a **4-Layer Open Hybrid Architecture** tailored spe
 ### Layer 1: Open-Standard Digital Grid (The Foundation)
 - Powered by **Open Location Code (Plus Codes)** — an open-source, royalty-free, zero-dependency algorithm.
 - **100% Offline**: Converts any latitude/longitude coordinate to a digital code and back completely on-device without internet or cellular connectivity.
-- **Resolution**: $\sim 14\text{m} \times 14\text{m}$ (10-character code) or $\sim 3\text{m} \times 3\text{m}$ (11-character sub-door code).
+- **Resolution**: ~14m × 14m (10-character code) or ~3m × 3m (11-character sub-door code).
 
 ### Layer 2: Administrative Hierarchy & Fayda National ID Binding
-- Structures addresses into intuitive, human-readable administrative hierarchies:
-  $$\mathbf{\text{ET}} - \mathbf{\text{AA}} - \mathbf{\text{LK}} - \mathbf{\text{W03}} - \mathbf{\text{H104}} - \mathbf{\text{8FW4+9X}}$$
-  *(Country: Ethiopia $\rightarrow$ Region: Addis Ababa $\rightarrow$ Sub-City: Lemi Kura $\rightarrow$ Woreda: 03 $\rightarrow$ House: 104 $\rightarrow$ Digital Pinpoint Grid)*
+- Structures addresses into intuitive, human-readable administrative hierarchies. Depth is **jurisdiction-aware, not fixed** — Addis Ababa's Woreda absorbed Kebele's role in the 2011 E.C. restructuring ([Addis Ababa City Administration](https://en.wikipedia.org/wiki/Addis_Ababa_City_Administration); [Borkena, 2020](https://borkena.com/2020/10/21/addis-ababa-city-administration-restructuring-new-sub-city/) — accessed 2026-08-24), but Kebele remains the lowest unit everywhere else, including Dire Dawa, Ethiopia's other chartered city ([Dire Dawa City Administration](https://en.wikipedia.org/wiki/Dire_Dawa_City_Administration) — accessed 2026-08-24), and all 10 other regions via `Region → Zone → Woreda → Kebele` ([Subdivisions of Ethiopia](https://en.wikipedia.org/wiki/Subdivisions_of_Ethiopia) — accessed 2026-08-24):
+  **`ET-AA-LK-W03-H104-8FW4+9X`**
+  *(Country: Ethiopia → Region: Addis Ababa → Sub-City: Lemi Kura → Woreda: 03 → House: 104 → Digital Pinpoint Grid)*
+
+  **`ET-DD-W01-K05-8FW4+9X`**
+  *(Country: Ethiopia → Region: Dire Dawa → Woreda: 01 → Kebele: 05 → Digital Pinpoint Grid)*
 - Bridges physical coordinates with Ethiopia's **Fayda Biometric National Digital ID** for seamless KYC and residency verification.
 
 ### Layer 3: Physical QR-Coded Municipal Door Plaques
@@ -72,13 +75,14 @@ This project follows strict engineering and AI agentic guidelines to maintain pr
 - **[AGENTS.md](./AGENTS.md)**: The authoritative single source of truth for all AI coding agents (Claude, Gemini, Cursor, Windsurf, Copilot, Antigravity).
 - **[coding_standards.md](./coding_standards.md)**: Engineering playbook covering low-bandwidth resilience, Ethiopian Data Protection Proclamation No. 1321/2024 compliance, and Row Level Security (RLS).
 - **[context.md](./context.md)**: In-depth research, architectural rationale, and global case studies (Dubai Makani, India DIGIPIN, GhanaPostGPS).
+- **[project_risks.md](./project_risks.md)**: Living risk register tracking architectural and feasibility risks, with status and mitigation paths.
 
 ---
 
 ## 🗺️ Project Roadmap
 
 - [x] **Milestone 0**: Problem formulation, case studies, and architectural RFC.
-- [x] **Milestone 1**: Core ET-NAS engine, address parser, and OLC algorithm implementation.
+- [ ] **Milestone 1**: Core ET-NAS engine, address parser, and OLC algorithm implementation. *(Open Location Code vendored as a submodule; `packages/core` implementation not yet started.)*
 - [ ] **Milestone 2**: Shared Backend API service with PostGIS boundary lookups.
 - [ ] **Milestone 3**: Interactive Web PWA and live vector door plaque generator.
 - [ ] **Milestone 4**: Cross-platform iOS & Android Flutter mobile app with offline camera QR scanner.
