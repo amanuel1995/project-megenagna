@@ -119,11 +119,9 @@ To build a reliable addressing system without spending decades on traditional mu
 * **Anchor Addresses to Identities:** Integrate the open digital grid directly into the **Fayda ID database**. When citizens register or update their Fayda profile, their home or business entrance's grid code is tagged as their primary legal address.
 * **Administrative Hierarchy Prefix:** Structure the address format logically:
 
-$$\text{AA} - \text{LK} - \text{W03} - \text{8FW4+9X}$$
+**`AA-LK-W03-8FW4+9X`**
 
-
-
-*(Region: Addis Ababa $\rightarrow$ Sub-City: Lemi Kura $\rightarrow$ Woreda: 03 $\rightarrow$ Precise Grid Code)*
+*(Region: Addis Ababa → Sub-City: Lemi Kura → Woreda: 03 → Precise Grid Code)*
 
 ### Layer 3: Physical QR-Coded Door Plaques in Urban Centers
 
